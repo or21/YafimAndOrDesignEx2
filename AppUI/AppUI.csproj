@@ -35,11 +35,11 @@
   <ItemGroup>
     <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Facebook.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\שיעורי בית לפי נושאים\שנה ג\סמסטר א\design patterns\01_FB01_BasicFacebookFeatures.V6.8.0.13\FBApi\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="FbGraphApiWrapper, Version=6.8.0.13, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\FbGraphApiWrapper.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\שיעורי בית לפי נושאים\שנה ג\סמסטר א\design patterns\01_FB01_BasicFacebookFeatures.V6.8.0.13\FBApi\FbGraphApiWrapper.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -96,8 +96,6 @@
       <DependentUpon>WhoWasBornOnMyBIrthdayForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="celeb-birthdays.json" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

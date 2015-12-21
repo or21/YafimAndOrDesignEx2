@@ -20,7 +20,7 @@ namespace AppUI
         /// <summary>
         /// Path to Json file
         /// </summary>
-        private readonly string m_PathToJsonFile = Application.StartupPath + @"../celeb-birthdays.JSON";
+        private readonly string m_PathToJsonFile = @"../../JSONFile/celeb-birthdays.JSON";
 
         /// <summary>
         /// Instance of Util class
