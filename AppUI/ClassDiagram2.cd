@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AppUI.LoginForm">
+    <Position X="10.25" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCAAAQAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppUI.MainWindow">
+    <Position X="15.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgAJgiUiAAAICB0CCAAAwCFAcQAgCmgAICIAhAAAA=</HashCode>
+      <FileName>MainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppUI.MostLikeablePhotosForm">
+    <Position X="17.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAAEAACQIAAIAoADACAQCQAgBAAACAAABBIAAAEA=</HashCode>
+      <FileName>MostLikeablePhotosForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppUI.Program">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppUI.WhoWasBornOnMyBirthdayForm">
+    <Position X="12.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEACgAAAMEwACACAQKACgIACAAAAAAAAAAAAA=</HashCode>
+      <FileName>WhoWasBornOnMyBIrthdayForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AppUI.Properties.Resources">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Utils.FbBlueButton">
+    <Position X="18" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utils.FbForm" Collapsed="true">
+    <Position X="13.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utils.FbWhiteButton">
+    <Position X="20" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utils.Utils">
+    <Position X="21.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="Utils.WebDownload">
+    <Position X="25" Y="3" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Windows.Forms.Button" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="System.Windows.Forms.Form" Collapsed="true">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Net.WebClient" Collapsed="true">
+    <Position X="25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.User">
+    <Position X="27" Y="2" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.User.eGender" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="FacebookWrapper.ObjectModel.User.eRelationshipStatus" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="FacebookWrapper.ObjectModel.User.eOnlineStatus" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Photo">
+    <Position X="22.25" Y="1" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Event">
+    <Position X="16" Y="1.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.Event.ePrivacy" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+      <Enum Name="FacebookWrapper.ObjectModel.Event.eRsvpType" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Class Name="FacebookWrapper.ObjectModel.Album">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="FacebookWrapper.ObjectModel.Album.eType" Collapsed="true">
+        <TypeIdentifier />
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
