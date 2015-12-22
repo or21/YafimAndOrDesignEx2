@@ -63,7 +63,7 @@ namespace AppUI
         /// <summary>
         /// Number of pictures to show
         /// </summary>
-        private int k_NumberOfPicturesToShow = 5;
+        private int m_NumberOfPicturesToShow = 5;
 
         /// <summary>
         /// List of facebook photos
@@ -78,7 +78,7 @@ namespace AppUI
         /// <summary>
         /// List of threads
         /// </summary>
-        private List<Thread> m_Threads;
+        private readonly List<Thread> r_Threads = new List<Thread>();
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -90,8 +90,10 @@ namespace AppUI
             r_LoggedInUser = i_UserData.LoggedInUser;
             FacebookService.s_CollectionLimit = 1000;
             r_Util = Utils.Utils.Instance;
+        }
 
-            fetchUserInfo();
+        protected override void OnLoad(EventArgs i_Event) {
+            new Thread(fetchUserInfo).Start();
         }
 
         /// <summary>
@@ -110,17 +112,17 @@ namespace AppUI
         /// </summary>
         private void fetchEvents()
         {
-            listBoxEvents.HorizontalScrollbar = true;
-            listBoxEvents.DisplayMember = "Name";
+            listBoxEvents.Invoke(new Action(() => listBoxEvents.HorizontalScrollbar = true));
+            listBoxEvents.Invoke(new Action(() => listBoxEvents.DisplayMember = "Name"));
             foreach (Event fbEvent in r_LoggedInUser.Events)
             {
-                listBoxEvents.Items.Add(fbEvent);
+                listBoxEvents.Invoke(new Action(() => listBoxEvents.Items.Add(fbEvent)));
             }
 
             if (r_LoggedInUser.Events.Count == 0)
             {
-                listBoxEvents.BackColor = Color.Gray;
-                listBoxEvents.Items.Add(k_NoEventYet);
+                listBoxEvents.Invoke(new Action(() => listBoxEvents.BackColor = Color.Gray));
+                listBoxEvents.Invoke(new Action(() => listBoxEvents.Items.Add(k_NoEventYet)));
             }
         }
 
@@ -129,18 +131,16 @@ namespace AppUI
         /// </summary>
         private void fetchUserInfo()
         {
-            textBoxPost.Text = k_StartPost;
-            m_Threads = new List<Thread>();
-
             Thread threadPhotos = new Thread(fetchPhotos);
-            m_Threads.Add(threadPhotos);
+            r_Threads.Add(threadPhotos);
             threadPhotos.Start();
 
-            fetchEvents();
-            fetchUserData();
-            fetchNewsFeed();
-            fetchPages();
-            fetchCheckIn();
+            textBoxPost.Invoke(new Action(() => textBoxPost.Text = k_StartPost));
+            new Thread(fetchEvents).Start();
+            new Thread(fetchUserData).Start();
+            new Thread(fetchNewsFeed).Start();
+            new Thread(fetchPages).Start();
+            new Thread(fetchCheckIn).Start();
         }
 
         /// <summary>
@@ -148,17 +148,17 @@ namespace AppUI
         /// </summary>
         private void fetchPages()
         {
-            listBoxPages.HorizontalScrollbar = true;
-            listBoxPages.DisplayMember = "Name";
+            listBoxPages.Invoke(new Action(() => listBoxPages.HorizontalScrollbar = true));
+            listBoxPages.Invoke(new Action(() => listBoxPages.DisplayMember = "Name"));
             foreach (Page fbPage in r_LoggedInUser.LikedPages)
             {
-                listBoxPages.Items.Add(fbPage);
+                listBoxPages.Invoke(new Action(() => listBoxPages.Items.Add(fbPage)));
             }
 
             if (r_LoggedInUser.LikedPages.Count == 0)
             {
-                listBoxPages.BackColor = Color.Gray;
-                listBoxPages.Items.Add(k_NoLikes);
+                listBoxPages.Invoke(new Action(() => listBoxPages.BackColor = Color.Gray));
+                listBoxPages.Invoke(new Action(() => listBoxPages.Items.Add(k_NoLikes)));
             }
         }
 
@@ -167,20 +167,20 @@ namespace AppUI
         /// </summary>
         private void fetchCheckIn()
         {
-            listBoxCheckIn.HorizontalScrollbar = true;
-            listBoxCheckIn.DisplayMember = "Message";
+            listBoxCheckIn.Invoke(new Action(() => listBoxCheckIn.HorizontalScrollbar = true));
+            listBoxCheckIn.Invoke(new Action(() => listBoxCheckIn.DisplayMember = "Message"));
             foreach (Checkin fbCheckin in r_LoggedInUser.Checkins)
             {
                 if (fbCheckin.Message != null)
                 {
-                    listBoxCheckIn.Items.Add(fbCheckin);
+                    listBoxCheckIn.Invoke(new Action(() => listBoxCheckIn.Items.Add(fbCheckin)));
                 }
             }
 
             if (r_LoggedInUser.Checkins.Count == 0)
             {
-                listBoxCheckIn.BackColor = Color.Gray;
-                listBoxCheckIn.Items.Add(k_NoCheckIns);
+                listBoxCheckIn.Invoke(new Action(() => listBoxCheckIn.BackColor = Color.Gray));
+                listBoxCheckIn.Invoke(new Action(() => listBoxCheckIn.Items.Add(k_NoCheckIns)));
             }
         }
 
@@ -190,7 +190,7 @@ namespace AppUI
         private void fetchPhotos()
         {
             m_ListOfPhotos = new List<Photo>();
-            m_MostLikeablePhotos = new List<Photo>(k_NumberOfPicturesToShow);
+            m_MostLikeablePhotos = new List<Photo>(m_NumberOfPicturesToShow);
             foreach (Album album in r_LoggedInUser.Albums)
             {
                 foreach (Photo photo in album.Photos)
@@ -205,12 +205,12 @@ namespace AppUI
             }
             else
             {
-                if (m_ListOfPhotos.Count < k_NumberOfPicturesToShow)
+                if (m_ListOfPhotos.Count < m_NumberOfPicturesToShow)
                 {
-                    k_NumberOfPicturesToShow = m_ListOfPhotos.Count;
+                    m_NumberOfPicturesToShow = m_ListOfPhotos.Count;
                 }
 
-                m_MostLikeablePhotos = r_Util.FindMostLikablePhotos(k_NumberOfPicturesToShow, m_ListOfPhotos);
+                m_MostLikeablePhotos = r_Util.FindMostLikablePhotos(m_NumberOfPicturesToShow, m_ListOfPhotos);
             }
         }
 
@@ -219,27 +219,27 @@ namespace AppUI
         /// </summary>
         private void fetchNewsFeed()
         {
-            listBoxFeed.HorizontalScrollbar = true;
+            listBoxFeed.Invoke(new Action(() => listBoxFeed.HorizontalScrollbar = true));
             foreach (Post post in r_LoggedInUser.NewsFeed)
             {
                 if (post.Message != null)
                 {
-                    listBoxFeed.Items.Add(post.UpdateTime + ": " + post.Message);
+                    listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(post.UpdateTime + ": " + post.Message)));
                 }
                 else if (post.Caption != null)
                 {
-                    listBoxFeed.Items.Add(post.UpdateTime + ": " + post.Caption);
+                    listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(post.UpdateTime + ": " + post.Caption)));
                 }
                 else
                 {
-                    listBoxFeed.Items.Add(string.Format(post.UpdateTime + ": " + "[{0}]", post.Type));
+                    listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(string.Format(post.UpdateTime + ": " + "[{0}]", post.Type))));
                 }
             }
 
             if (r_LoggedInUser.NewsFeed.Count == 0)
             {
-                listBoxFeed.BackColor = Color.Gray;
-                listBoxFeed.Items.Add(k_NoPostsToRetrieve);
+                listBoxFeed.Invoke(new Action(() => listBoxFeed.BackColor = Color.Gray));
+                listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(k_NoPostsToRetrieve)));
             }
         }
 
@@ -248,26 +248,26 @@ namespace AppUI
         /// </summary>
         private void fetchUserData()
         {
-            listBoxProfie.HorizontalScrollbar = true;
+            listBoxProfie.Invoke(new Action(() => listBoxProfie.HorizontalScrollbar = true));
             pictureBoxProfile.LoadAsync(r_LoggedInUser.PictureNormalURL);
             if (r_LoggedInUser.Birthday != null)
             {
-                listBoxProfie.Items.Add("Birthday: " + r_LoggedInUser.Birthday);
+                listBoxProfie.Invoke(new Action(() => listBoxProfie.Items.Add("Birthday: " + r_LoggedInUser.Birthday)));
             }
 
             if (r_LoggedInUser.Gender != null)
             {
-                listBoxProfie.Items.Add("Gender: " + r_LoggedInUser.Gender);
+                listBoxProfie.Invoke(new Action(() => listBoxProfie.Items.Add("Gender: " + r_LoggedInUser.Gender)));
             }
 
             if (r_LoggedInUser.Hometown != null)
             {
-                listBoxProfie.Items.Add("Hometown: " + r_LoggedInUser.Hometown.Name);
+                listBoxProfie.Invoke(new Action(() => listBoxProfie.Items.Add("Hometown: " + r_LoggedInUser.Hometown.Name)));
             }
 
             if (r_LoggedInUser.Email != null)
             {
-                listBoxProfie.Items.Add("Email: " + r_LoggedInUser.Email);
+                listBoxProfie.Invoke(new Action(() => listBoxProfie.Items.Add("Email: " + r_LoggedInUser.Email)));
             }
         }
 
@@ -303,7 +303,7 @@ namespace AppUI
             int width = 0;
             int height = 0;
 
-            foreach (Thread thread in m_Threads)
+            foreach (Thread thread in r_Threads)
             {
                 thread.Join();
             }
@@ -320,7 +320,7 @@ namespace AppUI
         /// <param name="i_Height">Picture Height</param>
         private void createMostLikeablePictureForm(int i_Width, int i_Height)
         {
-            MostLikeablePhotosForm likeablePhotosForm = new MostLikeablePhotosForm(m_MostLikeablePhotos, k_NumberOfPicturesToShow)
+            MostLikeablePhotosForm likeablePhotosForm = new MostLikeablePhotosForm(m_MostLikeablePhotos, m_NumberOfPicturesToShow)
             {
                 Size = new Size(i_Width, i_Height + ButtonMargin),
                 StartPosition = FormStartPosition.CenterScreen
