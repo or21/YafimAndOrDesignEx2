@@ -6,8 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 using Utils;
+using System.Drawing;
 
 namespace AppUI
 {
@@ -19,12 +21,12 @@ namespace AppUI
         /// <summary>
         /// Number of pictures 
         /// </summary>
-        private readonly int m_NumberOfPicturesToShow;
+        private int r_NumberOfPicturesToShow = 5;
 
         /// <summary>
         /// List of the top N pictures
         /// </summary>
-        private readonly List<Photo> m_TopLikeablePhotos;
+        private readonly List<Photo> m_AllPhotos;
 
         /// <summary>
         /// Instance of Util class
@@ -41,23 +43,45 @@ namespace AppUI
         /// </summary>
         private Photo m_CurrentImageDisplayed;
 
+        private List<Photo> m_TopLikeablePhotos;
+
         /// <summary>
         /// Initializes a new instance of the MostLikeablePhotosForm class.
         /// </summary>
-        /// <param name="i_TopLikeablePhotos">Top likeable pictures</param>
-        /// <param name="i_NumberOfPicturesToShow">Number of pictures to show</param>
-        public MostLikeablePhotosForm(List<Photo> i_TopLikeablePhotos, int i_NumberOfPicturesToShow)
+        public MostLikeablePhotosForm()
         {
             InitializeComponent();
+            r_Util = Utils.Utils.Instance;
 
             pictureBoxCurrentPic.LoadCompleted += pictureBoxCurrentPic_LoadCompleted;
 
-            m_TopLikeablePhotos = i_TopLikeablePhotos;
+            m_AllPhotos = MainWindow.AllPhotos;
             m_IndexOfCurrentImage = 0;
 
-            m_NumberOfPicturesToShow = i_NumberOfPicturesToShow;
+            StartPosition = FormStartPosition.CenterScreen;
 
-            r_Util = Utils.Utils.Instance;
+            getTopLikeablePhotos();
+        }
+
+        /// <summary>
+        /// Gets the top likable photos 
+        /// </summary>
+        private void getTopLikeablePhotos()
+        {
+            int width = 0;
+            int height = 0;
+
+            m_TopLikeablePhotos = new List<Photo>(r_NumberOfPicturesToShow);
+            if (m_AllPhotos.Count < r_NumberOfPicturesToShow)
+            {
+                r_NumberOfPicturesToShow = m_AllPhotos.Count;
+            }
+
+            m_TopLikeablePhotos = r_Util.FindMostLikablePhotos(r_NumberOfPicturesToShow, m_AllPhotos);
+
+            r_Util.SortPhotosByDescendingOrder(m_TopLikeablePhotos);
+            r_Util.GetWidthAndHeight(ref width, ref height, m_TopLikeablePhotos);
+            Size = new Size(width, height + ButtonMargin);
         }
 
         /// <summary>
@@ -88,7 +112,7 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonNext_Click(object i_Sender, EventArgs i_Event)
         {
-            m_IndexOfCurrentImage = r_Util.SetNextImage(m_IndexOfCurrentImage, m_NumberOfPicturesToShow);
+            m_IndexOfCurrentImage = r_Util.SetNextImage(m_IndexOfCurrentImage, r_NumberOfPicturesToShow);
             loadImage(m_TopLikeablePhotos[m_IndexOfCurrentImage]);
         }
 
@@ -99,7 +123,7 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonBack_Click(object i_Sender, EventArgs i_Event)
         {
-            m_IndexOfCurrentImage = r_Util.SetPrevImage(m_IndexOfCurrentImage, m_NumberOfPicturesToShow);
+            m_IndexOfCurrentImage = r_Util.SetPrevImage(m_IndexOfCurrentImage, r_NumberOfPicturesToShow);
             loadImage(m_TopLikeablePhotos[m_IndexOfCurrentImage]);
         }
 

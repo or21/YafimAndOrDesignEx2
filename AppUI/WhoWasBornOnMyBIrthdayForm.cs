@@ -40,14 +40,11 @@ namespace AppUI
         /// <summary>
         /// Initializes a new instance of the WhoWasBornOnMyBirthdayForm class.
         /// </summary>
-        /// <param name="i_BirthdayDate">Birthday date mm/dd/yyyy </param>
-        public WhoWasBornOnMyBirthdayForm(string i_BirthdayDate)
+        public WhoWasBornOnMyBirthdayForm()
         {
             InitializeComponent();
-
             r_Util = Utils.Utils.Instance;
-
-            m_BirthdayDate = i_BirthdayDate;
+            m_BirthdayDate = MainWindow.Birthday;
         }
 
         /// <summary>
