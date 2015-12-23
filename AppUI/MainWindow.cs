@@ -21,7 +21,7 @@ namespace AppUI
     public partial class MainWindow : FbForm
     {
         /// <summary>
-        /// Post message
+        /// Post message.
         /// </summary>
         private const string k_StartPost = "What's on your mind...";
 
