@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="WhoWasBornOnMyBirthdayForm.Designer.cs" company="A16_Ex02">
+// <copyright file="FormWhoWasBornOnMyBirthday.Designer.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -8,7 +8,7 @@ namespace AppUI
     /// <summary>
     /// Get information about famous people who was born on my birthday date
     /// </summary>
-    public partial class WhoWasBornOnMyBirthdayForm
+    public partial class FormWhoWasBornOnMyBirthday
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@ namespace AppUI
         private void InitializeComponent()
         {
             this.listBoxWhoWasBorn = new System.Windows.Forms.ListBox();
-            this.fbWhiteButtonExit = new Utils.FbWhiteButton();
+            this.fbWhiteButtonExit = new Utils.ButtonFbWhite();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.textBoxInfo = new System.Windows.Forms.TextBox();
             this.labelName = new System.Windows.Forms.Label();
@@ -108,7 +108,7 @@ namespace AppUI
             this.labelWikiCopyright.TabIndex = 9;
             this.labelWikiCopyright.Text = "From Wikipedia, the free encyclopedia";
             // 
-            // WhoWasBornOnMyBirthdayForm
+            // FormWhoWasBornOnMyBirthday
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -122,8 +122,8 @@ namespace AppUI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "WhoWasBornOnMyBirthdayForm";
-            this.Text = "WhoWasBornOnMyBirthdayForm";
+            this.Name = "FormWhoWasBornOnMyBirthday";
+            this.Text = "FormWhoWasBornOnMyBirthday";
             this.Controls.SetChildIndex(this.listBoxWhoWasBorn, 0);
             this.Controls.SetChildIndex(this.fbWhiteButtonExit, 0);
             this.Controls.SetChildIndex(this.pictureBox, 0);
@@ -145,7 +145,7 @@ namespace AppUI
         /// <summary>
         /// White button
         /// </summary>
-        private Utils.FbWhiteButton fbWhiteButtonExit;
+        private Utils.ButtonFbWhite fbWhiteButtonExit;
 
         /// <summary>
         /// Picture box

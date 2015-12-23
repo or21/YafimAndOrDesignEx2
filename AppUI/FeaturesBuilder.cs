@@ -29,12 +29,12 @@ namespace AppUI
             m_Assembly = Assembly.GetExecutingAssembly();
             foreach (Type type in m_Assembly.GetTypes())
             {
-                if (type.IsSubclassOf(typeof(FbForm)) && type.IsPublic && type == i_FeatureToLoad)
+                if (type.IsSubclassOf(typeof(FormFb)) && type.IsPublic && type == i_FeatureToLoad)
                 {
                     ConstructorInfo constructorInfo = type.GetConstructor(new Type[] { });
                     if (constructorInfo != null)
                     {
-                        FbForm formToLoad = constructorInfo.Invoke(new object[] { }) as FbForm;
+                        FormFb formToLoad = constructorInfo.Invoke(new object[] { }) as FormFb;
                         if (formToLoad != null)
                         {
                             formToLoad.ShowDialog();

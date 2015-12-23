@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MostLikeablePhotosForm.Designer.cs" company="A16_Ex02">
+// <copyright file="FormMostLikeablePhotos.Designer.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -10,7 +10,7 @@ namespace AppUI
     /// <summary>
     /// Get the N likeable pictures you have on facebook.
     /// </summary>
-    public partial class MostLikeablePhotosForm
+    public partial class FormMostLikeablePhotos
     {
         /// <summary>
         /// Required designer variable.
@@ -39,11 +39,11 @@ namespace AppUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MostLikeablePhotosForm));
-            this.buttonNext = new Utils.FbBlueButton();
-            this.buttonTopPicture = new Utils.FbBlueButton();
-            this.buttonBack = new Utils.FbBlueButton();
-            this.buttonExit = new Utils.FbWhiteButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMostLikeablePhotos));
+            this.buttonNext = new Utils.ButtonFbBlue();
+            this.buttonTopPicture = new Utils.ButtonFbBlue();
+            this.buttonBack = new Utils.ButtonFbBlue();
+            this.buttonExit = new Utils.ButtonFbWhite();
             this.labelNumberOfLikes = new System.Windows.Forms.Label();
             this.pictureBoxCurrentPic = new System.Windows.Forms.PictureBox();
             this.pictureBoxLike = new System.Windows.Forms.PictureBox();
@@ -181,22 +181,22 @@ namespace AppUI
         /// <summary>
         /// Button next picture
         /// </summary>
-        private Utils.FbBlueButton buttonNext;
+        private Utils.ButtonFbBlue buttonNext;
 
         /// <summary>
         /// Button most likeable picture
         /// </summary>
-        private Utils.FbBlueButton buttonTopPicture;
+        private Utils.ButtonFbBlue buttonTopPicture;
 
         /// <summary>
         /// Button previous picture
         /// </summary>
-        private Utils.FbBlueButton buttonBack;
+        private Utils.ButtonFbBlue buttonBack;
 
         /// <summary>
         /// Close form
         /// </summary>
-        private Utils.FbWhiteButton buttonExit;
+        private Utils.ButtonFbWhite buttonExit;
 
         /// <summary>
         /// Label of Number of likes

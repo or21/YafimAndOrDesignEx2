@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="FbWhiteButton.cs" company="A16_Ex02">
+// <copyright file="ButtonFbBlue.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -9,16 +9,25 @@ using System.Windows.Forms;
 namespace Utils
 {
     /// <summary>
-    /// Facebook UI white button
+    /// Facebook UI blue button
     /// </summary>
-    public sealed class FbWhiteButton : Button
+    public sealed class ButtonFbBlue : Button
     {
         /// <summary>
-        /// Initializes a new instance of the FbWhiteButton class.
+        /// Initializes a new instance of the FbBlueButton class.
         /// </summary>
-        public FbWhiteButton()
+        public ButtonFbBlue()
         {
             setUniqueProperties();
+        }
+
+        /// <summary>
+        /// Set background color.
+        /// </summary>
+        private void setBackgroundColor()
+        {
+            Color tempRgbColor = Color.FromArgb(0x617AAC);
+            BackColor = Color.FromArgb(tempRgbColor.R, tempRgbColor.G, tempRgbColor.B);
         }
 
         /// <summary>
@@ -26,14 +35,15 @@ namespace Utils
         /// </summary>
         private void setUniqueProperties()
         {
+            setBackgroundColor();
             FlatStyle = FlatStyle.Flat;
             Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 177);
-            ForeColor = Color.Black;
-            Name = "fbWhiteButton";
+            ForeColor = Color.White;
+            Name = "fbBlueButton";
             UseVisualStyleBackColor = false;
 
-            FlatAppearance.BorderColor = Color.Black;
+            FlatAppearance.BorderColor = Color.Blue;
             FlatAppearance.BorderSize = 1;
-        }        
+        }   
     }
 }

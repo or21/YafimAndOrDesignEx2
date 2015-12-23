@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MainWindow.cs" company="A16_Ex02">
+// <copyright file="FormMainWindow.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -18,7 +18,7 @@ namespace AppUI
     /// <summary>
     /// UI of the application
     /// </summary>
-    public partial class MainWindow : FbForm
+    public partial class FormMainWindow : FormFb
     {
         /// <summary>
         /// Post message.
@@ -74,7 +74,7 @@ namespace AppUI
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
         /// <param name="i_UserData">The user facebook data</param>
-        public MainWindow(LoginResult i_UserData)
+        public FormMainWindow(LoginResult i_UserData)
         {
             InitializeComponent();
             r_LoggedInUser = i_UserData.LoggedInUser;
@@ -275,17 +275,17 @@ namespace AppUI
                 thread.Join();
             }
 
-            r_FeaturesFactory.LoadFeature(typeof(MostLikeablePhotosForm));
+            r_FeaturesFactory.LoadFeature(typeof(FormMostLikeablePhotos));
         }
 
         /// <summary>
-        /// Open new WhoWasBornOnMyBirthdayForm instance.
+        /// Open new FormWhoWasBornOnMyBirthday instance.
         /// </summary>
         /// <param name="i_Sender">Object sender</param>
         /// <param name="i_Event">The event</param>
         private void buttonGetCelebsBD_Click(object i_Sender, EventArgs i_Event)
         {
-            r_FeaturesFactory.LoadFeature(typeof(WhoWasBornOnMyBirthdayForm));
+            r_FeaturesFactory.LoadFeature(typeof(FormWhoWasBornOnMyBirthday));
         }
 
         /// <summary>

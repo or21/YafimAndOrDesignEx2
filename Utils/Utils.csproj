@@ -49,13 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FbBlueButton.cs">
+    <Compile Include="ButtonFbBlue.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FbForm.cs">
+    <Compile Include="FormFb.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FbWhiteButton.cs">
+    <Compile Include="ButtonFbWhite.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +70,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="FbForm.resx">
-      <DependentUpon>FbForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormFb.resx">
+      <DependentUpon>FormFb.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MainWindow.Designer.cs" company="A16_Ex02">
+// <copyright file="FormMainWindow.Designer.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -8,7 +8,7 @@ namespace AppUI
     /// <summary>
     /// Form designer
     /// </summary>
-    public partial class MainWindow
+    public partial class FormMainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -44,10 +44,10 @@ namespace AppUI
             this.listBoxCheckIn = new System.Windows.Forms.ListBox();
             this.listBoxProfie = new System.Windows.Forms.ListBox();
             this.listBoxPages = new System.Windows.Forms.ListBox();
-            this.buttonGetMostPhotos = new Utils.FbBlueButton();
-            this.buttonGetCelebsBD = new Utils.FbBlueButton();
-            this.buttonPost = new Utils.FbBlueButton();
-            this.buttonLogout = new Utils.FbBlueButton();
+            this.buttonGetMostPhotos = new Utils.ButtonFbBlue();
+            this.buttonGetCelebsBD = new Utils.ButtonFbBlue();
+            this.buttonPost = new Utils.ButtonFbBlue();
+            this.buttonLogout = new Utils.ButtonFbBlue();
             this.listBoxFeed = new System.Windows.Forms.ListBox();
             this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelCheckIn = new System.Windows.Forms.Label();
@@ -284,10 +284,10 @@ namespace AppUI
         private System.Windows.Forms.ListBox listBoxCheckIn;
         private System.Windows.Forms.ListBox listBoxProfie;
         private System.Windows.Forms.ListBox listBoxPages;
-        private Utils.FbBlueButton buttonGetMostPhotos;
-        private Utils.FbBlueButton buttonGetCelebsBD;
-        private Utils.FbBlueButton buttonPost;
-        private Utils.FbBlueButton buttonLogout;
+        private Utils.ButtonFbBlue buttonGetMostPhotos;
+        private Utils.ButtonFbBlue buttonGetCelebsBD;
+        private Utils.ButtonFbBlue buttonPost;
+        private Utils.ButtonFbBlue buttonLogout;
         private System.Windows.Forms.ListBox listBoxFeed;
         private System.Windows.Forms.Label labelCheckIn;
         private System.Windows.Forms.Label labelEvents;

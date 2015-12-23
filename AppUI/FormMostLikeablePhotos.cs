@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MostLikeablePhotosForm.cs" company="A16_Ex02">
+// <copyright file="FormMostLikeablePhotos.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -16,7 +16,7 @@ namespace AppUI
     /// <summary>
     /// Get the N likeable pictures you have on facebook.
     /// </summary>
-    public partial class MostLikeablePhotosForm : FbForm
+    public partial class FormMostLikeablePhotos : FormFb
     {
         /// <summary>
         /// List of the top N pictures
@@ -51,14 +51,14 @@ namespace AppUI
         /// <summary>
         /// Initializes a new instance of the MostLikeablePhotosForm class.
         /// </summary>
-        public MostLikeablePhotosForm()
+        public FormMostLikeablePhotos()
         {
             InitializeComponent();
             r_Util = Utils.Utils.Instance;
 
             pictureBoxCurrentPic.LoadCompleted += pictureBoxCurrentPic_LoadCompleted;
 
-            m_AllPhotos = MainWindow.AllPhotos;
+            m_AllPhotos = FormMainWindow.AllPhotos;
             m_IndexOfCurrentImage = 0;
 
             StartPosition = FormStartPosition.CenterScreen;
