@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 namespace Utils
 {
     /// <summary>
-    /// Singeltone class holds the necessarily logic to use AppUI class.
+    /// Singeltone class holds the necessarily logic to use AppUI class..
     /// </summary>
     public class Utils
     {

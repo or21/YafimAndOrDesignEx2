@@ -37,6 +37,7 @@ namespace AppUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
@@ -53,7 +54,9 @@ namespace AppUI
             this.labelPages = new System.Windows.Forms.Label();
             this.labelData = new System.Windows.Forms.Label();
             this.labelFeed = new System.Windows.Forms.Label();
+            this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxProfile
@@ -163,6 +166,8 @@ namespace AppUI
             // 
             // listBoxFeed
             // 
+            this.listBoxFeed.DataSource = this.postsBindingSource;
+            this.listBoxFeed.DisplayMember = "Message";
             this.listBoxFeed.FormattingEnabled = true;
             this.listBoxFeed.Location = new System.Drawing.Point(209, 147);
             this.listBoxFeed.Name = "listBoxFeed";
@@ -217,11 +222,15 @@ namespace AppUI
             this.labelFeed.TabIndex = 18;
             this.labelFeed.Text = "News feed";
             // 
+            // postsBindingSource
+            // 
+            this.postsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 490);
+            this.ClientSize = new System.Drawing.Size(782, 490);
             this.Controls.Add(this.labelFeed);
             this.Controls.Add(this.labelData);
             this.Controls.Add(this.labelPages);
@@ -260,6 +269,7 @@ namespace AppUI
             this.Controls.SetChildIndex(this.labelData, 0);
             this.Controls.SetChildIndex(this.labelFeed, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -283,5 +293,6 @@ namespace AppUI
         private System.Windows.Forms.Label labelPages;
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelFeed;
+        private System.Windows.Forms.BindingSource postsBindingSource;
     }
 }
