@@ -56,29 +56,19 @@ namespace AppUI
         private readonly User r_LoggedInUser;
 
         /// <summary>
-        /// Instance of Util class
-        /// </summary>
-        private readonly Utils.Utils r_Util;
-
-        /// <summary>
-        /// Number of pictures to show
-        /// </summary>
-        private int m_NumberOfPicturesToShow = 5;
-
-        /// <summary>
         /// List of facebook photos
         /// </summary>
-        private List<Photo> m_ListOfPhotos;
-
-        /// <summary>
-        /// List of top likeable photos
-        /// </summary>
-        private List<Photo> m_MostLikeablePhotos;
+        private static List<Photo> s_ListOfPhotos;
 
         /// <summary>
         /// List of threads
         /// </summary>
         private readonly List<Thread> r_Threads = new List<Thread>();
+
+        /// <summary>
+        /// User birthday
+        /// </summary>
+        private static string s_Bdate;
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
@@ -89,7 +79,7 @@ namespace AppUI
             InitializeComponent();
             r_LoggedInUser = i_UserData.LoggedInUser;
             FacebookService.s_CollectionLimit = 1000;
-            r_Util = Utils.Utils.Instance;
+            s_Bdate = r_LoggedInUser.Birthday;
         }
 
         /// <summary>
@@ -195,28 +185,19 @@ namespace AppUI
         /// </summary>
         private void fetchPhotos()
         {
-            m_ListOfPhotos = new List<Photo>();
-            m_MostLikeablePhotos = new List<Photo>(m_NumberOfPicturesToShow);
+            s_ListOfPhotos = new List<Photo>();
+            
             foreach (Album album in r_LoggedInUser.Albums)
             {
                 foreach (Photo photo in album.Photos)
                 {
-                    m_ListOfPhotos.Add(photo);
+                    s_ListOfPhotos.Add(photo);
                 }
             }
 
-            if (m_ListOfPhotos.Count == 0)
+            if (s_ListOfPhotos.Count == 0)
             {
                 buttonGetMostPhotos.Enabled = false;
-            }
-            else
-            {
-                if (m_ListOfPhotos.Count < m_NumberOfPicturesToShow)
-                {
-                    m_NumberOfPicturesToShow = m_ListOfPhotos.Count;
-                }
-
-                m_MostLikeablePhotos = r_Util.FindMostLikablePhotos(m_NumberOfPicturesToShow, m_ListOfPhotos);
             }
         }
 
@@ -302,6 +283,8 @@ namespace AppUI
             Application.Exit();
         }
 
+        private readonly FeaturesFactory r_FeaturesFactory = new FeaturesFactory();
+
         /// <summary>
         /// Show 5 most likeable pictures 
         /// </summary>
@@ -310,32 +293,13 @@ namespace AppUI
         private void buttonTopLikeablePhotos_Click(object i_Sender, EventArgs i_Event)
         {
             MessageBox.Show(k_WaitMessage);
-            int width = 0;
-            int height = 0;
 
             foreach (Thread thread in r_Threads)
             {
                 thread.Join();
             }
 
-            r_Util.SortPhotosByDescendingOrder(m_MostLikeablePhotos);
-            r_Util.GetWidthAndHeight(ref width, ref height, m_MostLikeablePhotos);
-            createMostLikeablePictureForm(width, height);
-        }
-
-        /// <summary>
-        /// Creates a new most likeable pictures form
-        /// </summary>
-        /// <param name="i_Width">Picture Width</param>
-        /// <param name="i_Height">Picture Height</param>
-        private void createMostLikeablePictureForm(int i_Width, int i_Height)
-        {
-            MostLikeablePhotosForm likeablePhotosForm = new MostLikeablePhotosForm(m_MostLikeablePhotos, m_NumberOfPicturesToShow)
-            {
-                Size = new Size(i_Width, i_Height + ButtonMargin),
-                StartPosition = FormStartPosition.CenterScreen
-            };
-            likeablePhotosForm.ShowDialog();
+            r_FeaturesFactory.LoadFeature(typeof(MostLikeablePhotosForm));
         }
 
         /// <summary>
@@ -345,8 +309,23 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonGetCelebsBD_Click(object i_Sender, EventArgs i_Event)
         {
-            WhoWasBornOnMyBirthdayForm whoWasBornOnMyBirthdayForm = new WhoWasBornOnMyBirthdayForm(r_LoggedInUser.Birthday);
-            whoWasBornOnMyBirthdayForm.ShowDialog();
+            r_FeaturesFactory.LoadFeature(typeof(WhoWasBornOnMyBirthdayForm));
+        }
+
+        /// <summary>
+        /// Gets all the photos of the user
+        /// </summary>
+        public static List<Photo> AllPhotos
+        {
+            get { return s_ListOfPhotos; }
+        }
+
+        /// <summary>
+        /// Gets Birthday
+        /// </summary>
+        public static string Birthday
+        {
+            get { return s_Bdate; }
         }
     }
 }

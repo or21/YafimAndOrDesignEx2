@@ -173,6 +173,7 @@ namespace AppUI
             this.listBoxFeed.Name = "listBoxFeed";
             this.listBoxFeed.Size = new System.Drawing.Size(347, 277);
             this.listBoxFeed.TabIndex = 2;
+            this.listBoxFeed.ValueMember = "Caption";
             // 
             // labelCheckIn
             // 
