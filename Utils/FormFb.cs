@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="FbForm.cs" company="A16_Ex02">
+// <copyright file="FormFb.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace Utils
     /// <summary>
     /// FaceBook UI form
     /// </summary>
-    public class FbForm : Form
+    public class FormFb : Form
     {
         /// <summary>
         /// Name of the application
@@ -60,7 +60,7 @@ namespace Utils
         /// <summary>
         /// Initializes a new instance of the FbForm class.
         /// </summary>
-        public FbForm()
+        public FormFb()
         {
             initializeForm();
         }

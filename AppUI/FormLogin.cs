@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="LoginForm.cs" company="A16_Ex02">
+// <copyright file="FormLogin.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -13,12 +13,12 @@ namespace AppUI
     /// <summary>
     /// Login form class.
     /// </summary>
-    public partial class LoginForm : FbForm
+    public partial class FormLogin : FormFb
     {
         /// <summary>
         /// Initializes a new instance of the LoginForm class.
         /// </summary>
-        public LoginForm()
+        public FormLogin()
         {
             InitializeComponent();
         }
@@ -48,7 +48,7 @@ namespace AppUI
             {
                 try
                 {
-                    Form appUi = new MainWindow(result);
+                    Form appUi = new FormMainWindow(result);
                     this.Hide();
                     appUi.ShowDialog();
                 }

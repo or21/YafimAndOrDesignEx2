@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MostLikeablePhotosForm.cs" company="A16_Ex02">
+// <copyright file="FormMostLikeablePhotos.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -7,22 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using System.Drawing;
 using FacebookWrapper.ObjectModel;
 using Utils;
-using System.Drawing;
 
 namespace AppUI
 {
     /// <summary>
     /// Get the N likeable pictures you have on facebook.
     /// </summary>
-    public partial class MostLikeablePhotosForm : FbForm
+    public partial class FormMostLikeablePhotos : FormFb
     {
-        /// <summary>
-        /// Number of pictures 
-        /// </summary>
-        private int r_NumberOfPicturesToShow = 5;
-
         /// <summary>
         /// List of the top N pictures
         /// </summary>
@@ -39,28 +34,37 @@ namespace AppUI
         private int m_IndexOfCurrentImage;
 
         /// <summary>
+        /// Number of pictures 
+        /// </summary>
+        private int m_NumberOfPicturesToShow = 5;
+
+        /// <summary>
         /// The current image to display
         /// </summary>
         private Photo m_CurrentImageDisplayed;
 
+        /// <summary>
+        /// List of most likeable photos
+        /// </summary>
         private List<Photo> m_TopLikeablePhotos;
 
         /// <summary>
         /// Initializes a new instance of the MostLikeablePhotosForm class.
         /// </summary>
-        public MostLikeablePhotosForm()
+        public FormMostLikeablePhotos()
         {
             InitializeComponent();
             r_Util = Utils.Utils.Instance;
 
             pictureBoxCurrentPic.LoadCompleted += pictureBoxCurrentPic_LoadCompleted;
 
-            m_AllPhotos = MainWindow.AllPhotos;
+            m_AllPhotos = FormMainWindow.AllPhotos;
             m_IndexOfCurrentImage = 0;
 
             StartPosition = FormStartPosition.CenterScreen;
 
             getTopLikeablePhotos();
+            loadImage(m_TopLikeablePhotos[0]);
         }
 
         /// <summary>
@@ -71,13 +75,13 @@ namespace AppUI
             int width = 0;
             int height = 0;
 
-            m_TopLikeablePhotos = new List<Photo>(r_NumberOfPicturesToShow);
-            if (m_AllPhotos.Count < r_NumberOfPicturesToShow)
+            m_TopLikeablePhotos = new List<Photo>(m_NumberOfPicturesToShow);
+            if (m_AllPhotos.Count < m_NumberOfPicturesToShow)
             {
-                r_NumberOfPicturesToShow = m_AllPhotos.Count;
+                m_NumberOfPicturesToShow = m_AllPhotos.Count;
             }
 
-            m_TopLikeablePhotos = r_Util.FindMostLikablePhotos(r_NumberOfPicturesToShow, m_AllPhotos);
+            m_TopLikeablePhotos = r_Util.FindMostLikablePhotos(m_NumberOfPicturesToShow, m_AllPhotos);
 
             r_Util.SortPhotosByDescendingOrder(m_TopLikeablePhotos);
             r_Util.GetWidthAndHeight(ref width, ref height, m_TopLikeablePhotos);
@@ -112,7 +116,7 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonNext_Click(object i_Sender, EventArgs i_Event)
         {
-            m_IndexOfCurrentImage = r_Util.SetNextImage(m_IndexOfCurrentImage, r_NumberOfPicturesToShow);
+            m_IndexOfCurrentImage = r_Util.SetNextImage(m_IndexOfCurrentImage, m_NumberOfPicturesToShow);
             loadImage(m_TopLikeablePhotos[m_IndexOfCurrentImage]);
         }
 
@@ -123,7 +127,7 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonBack_Click(object i_Sender, EventArgs i_Event)
         {
-            m_IndexOfCurrentImage = r_Util.SetPrevImage(m_IndexOfCurrentImage, r_NumberOfPicturesToShow);
+            m_IndexOfCurrentImage = r_Util.SetPrevImage(m_IndexOfCurrentImage, m_NumberOfPicturesToShow);
             loadImage(m_TopLikeablePhotos[m_IndexOfCurrentImage]);
         }
 

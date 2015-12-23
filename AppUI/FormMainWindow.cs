@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="MainWindow.cs" company="A16_Ex02">
+// <copyright file="FormMainWindow.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -16,9 +16,9 @@ using Utils;
 namespace AppUI
 {
     /// <summary>
-    /// UI of the application.
+    /// UI of the application
     /// </summary>
-    public partial class MainWindow : FbForm
+    public partial class FormMainWindow : FormFb
     {
         /// <summary>
         /// Post message.
@@ -51,19 +51,9 @@ namespace AppUI
         private const string k_WaitMessage = "This may take few seconds... Please click OK and Go get yourself a cup of coffee";
 
         /// <summary>
-        /// LoggedIn user
-        /// </summary>
-        private readonly User r_LoggedInUser;
-
-        /// <summary>
         /// List of facebook photos
         /// </summary>
         private static List<Photo> s_ListOfPhotos;
-
-        /// <summary>
-        /// List of threads
-        /// </summary>
-        private readonly List<Thread> r_Threads = new List<Thread>();
 
         /// <summary>
         /// User birthday
@@ -71,10 +61,20 @@ namespace AppUI
         private static string s_Bdate;
 
         /// <summary>
+        /// LoggedIn user
+        /// </summary>
+        private readonly User r_LoggedInUser;
+
+        /// <summary>
+        /// List of threads
+        /// </summary>
+        private readonly List<Thread> r_Threads = new List<Thread>();
+
+        /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
         /// <param name="i_UserData">The user facebook data</param>
-        public MainWindow(LoginResult i_UserData)
+        public FormMainWindow(LoginResult i_UserData)
         {
             InitializeComponent();
             r_LoggedInUser = i_UserData.LoggedInUser;
@@ -259,7 +259,7 @@ namespace AppUI
             Application.Exit();
         }
 
-        private readonly FeaturesFactory r_FeaturesFactory = new FeaturesFactory();
+        private readonly FeaturesBuilder r_FeaturesFactory = new FeaturesBuilder();
 
         /// <summary>
         /// Show 5 most likeable pictures 
@@ -275,17 +275,17 @@ namespace AppUI
                 thread.Join();
             }
 
-            r_FeaturesFactory.LoadFeature(typeof(MostLikeablePhotosForm));
+            r_FeaturesFactory.LoadFeature(typeof(FormMostLikeablePhotos));
         }
 
         /// <summary>
-        /// Open new WhoWasBornOnMyBirthdayForm instance.
+        /// Open new FormWhoWasBornOnMyBirthday instance.
         /// </summary>
         /// <param name="i_Sender">Object sender</param>
         /// <param name="i_Event">The event</param>
         private void buttonGetCelebsBD_Click(object i_Sender, EventArgs i_Event)
         {
-            r_FeaturesFactory.LoadFeature(typeof(WhoWasBornOnMyBirthdayForm));
+            r_FeaturesFactory.LoadFeature(typeof(FormWhoWasBornOnMyBirthday));
         }
 
         /// <summary>

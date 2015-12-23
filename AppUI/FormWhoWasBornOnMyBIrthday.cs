@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="WhoWasBornOnMyBirthdayForm.cs" company="A16_Ex02">
+// <copyright file="FormWhoWasBornOnMyBirthday.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -15,7 +15,7 @@ namespace AppUI
     /// <summary>
     /// Get information about famous people who was born on my birthday date
     /// </summary>
-    public partial class WhoWasBornOnMyBirthdayForm : FbForm
+    public partial class FormWhoWasBornOnMyBirthday : FormFb
     {
         /// <summary>
         /// Path to Json file
@@ -38,13 +38,13 @@ namespace AppUI
         private List<string> m_ListOfPeopleWhoWasBornOnMyBirthday;
 
         /// <summary>
-        /// Initializes a new instance of the WhoWasBornOnMyBirthdayForm class.
+        /// Initializes a new instance of the FormWhoWasBornOnMyBirthday class.
         /// </summary>
-        public WhoWasBornOnMyBirthdayForm()
+        public FormWhoWasBornOnMyBirthday()
         {
             InitializeComponent();
             r_Util = Utils.Utils.Instance;
-            m_BirthdayDate = MainWindow.Birthday;
+            m_BirthdayDate = FormMainWindow.Birthday;
         }
 
         /// <summary>

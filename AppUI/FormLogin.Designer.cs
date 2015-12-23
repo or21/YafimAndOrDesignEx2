@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="LoginForm.Designer.cs" company="A16_Ex02">
+// <copyright file="FormLogin.Designer.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -8,7 +8,7 @@ namespace AppUI
     /// <summary>
     /// Login form class
     /// </summary>
-    public partial class LoginForm
+    public partial class FormLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -38,7 +38,7 @@ namespace AppUI
         private void InitializeComponent()
         {
             this.labelHeadLine = new System.Windows.Forms.Label();
-            this.fbBlueButtonLogin = new Utils.FbBlueButton();
+            this.fbBlueButtonLogin = new Utils.ButtonFbBlue();
             this.SuspendLayout();
             // 
             // labelHeadLine
@@ -91,6 +91,6 @@ namespace AppUI
         /// <summary>
         /// Facebook button
         /// </summary>
-        private Utils.FbBlueButton fbBlueButtonLogin;
+        private Utils.ButtonFbBlue fbBlueButtonLogin;
     }
 }

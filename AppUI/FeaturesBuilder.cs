@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="FeaturesFactory.cs" company="A16_Ex02">
+// <copyright file="FeaturesBuilder.cs" company="A16_Ex02">
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
@@ -13,7 +13,7 @@ namespace AppUI
     /// <summary>
     /// This is the Factory class
     /// </summary>
-    public class FeaturesFactory
+    public class FeaturesBuilder
     {
         /// <summary>
         /// The current project assembly
@@ -29,16 +29,17 @@ namespace AppUI
             m_Assembly = Assembly.GetExecutingAssembly();
             foreach (Type type in m_Assembly.GetTypes())
             {
-                if (type.IsSubclassOf(typeof(FbForm)) && type.IsPublic && type == i_FeatureToLoad)
+                if (type.IsSubclassOf(typeof(FormFb)) && type.IsPublic && type == i_FeatureToLoad)
                 {
                     ConstructorInfo constructorInfo = type.GetConstructor(new Type[] { });
                     if (constructorInfo != null)
                     {
-                        FbForm formToLoad = constructorInfo.Invoke(new object[] { }) as FbForm;
+                        FormFb formToLoad = constructorInfo.Invoke(new object[] { }) as FormFb;
                         if (formToLoad != null)
                         {
                             formToLoad.ShowDialog();
                         }
+
                         return;
                     }
                 }
