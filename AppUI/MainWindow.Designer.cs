@@ -49,12 +49,12 @@ namespace AppUI
             this.buttonPost = new Utils.FbBlueButton();
             this.buttonLogout = new Utils.FbBlueButton();
             this.listBoxFeed = new System.Windows.Forms.ListBox();
+            this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelCheckIn = new System.Windows.Forms.Label();
             this.labelEvents = new System.Windows.Forms.Label();
             this.labelPages = new System.Windows.Forms.Label();
             this.labelData = new System.Windows.Forms.Label();
             this.labelFeed = new System.Windows.Forms.Label();
-            this.postsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -167,13 +167,17 @@ namespace AppUI
             // listBoxFeed
             // 
             this.listBoxFeed.DataSource = this.postsBindingSource;
-            this.listBoxFeed.DisplayMember = "Description";
+            this.listBoxFeed.DisplayMember = "Message";
             this.listBoxFeed.FormattingEnabled = true;
             this.listBoxFeed.Location = new System.Drawing.Point(209, 147);
             this.listBoxFeed.Name = "listBoxFeed";
             this.listBoxFeed.Size = new System.Drawing.Size(347, 277);
             this.listBoxFeed.TabIndex = 2;
             this.listBoxFeed.ValueMember = "Caption";
+            // 
+            // postsBindingSource
+            // 
+            this.postsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
             // 
             // labelCheckIn
             // 
@@ -222,10 +226,6 @@ namespace AppUI
             this.labelFeed.Size = new System.Drawing.Size(58, 13);
             this.labelFeed.TabIndex = 18;
             this.labelFeed.Text = "News feed";
-            // 
-            // postsBindingSource
-            // 
-            this.postsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
             // 
             // MainWindow
             // 

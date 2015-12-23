@@ -61,6 +61,7 @@ namespace AppUI
             StartPosition = FormStartPosition.CenterScreen;
 
             getTopLikeablePhotos();
+            loadImage(m_TopLikeablePhotos[0]);
         }
 
         /// <summary>

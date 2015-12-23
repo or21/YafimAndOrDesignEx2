@@ -207,31 +207,7 @@ namespace AppUI
         private void fetchNewsFeed()
         {
             listBoxFeed.Invoke(new Action(() => listBoxFeed.HorizontalScrollbar = true));
-
             listBoxFeed.Invoke(new Action(() => postsBindingSource.DataSource = r_LoggedInUser.Posts));
-
-            
-/*            foreach (Post post in r_LoggedInUser.NewsFeed)
-            {
-                if (post.Message != null)
-                {
-                    listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(post.UpdateTime + ": " + post.Message)));
-                }
-                else if (post.Caption != null)
-                {
-                    listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(post.UpdateTime + ": " + post.Caption)));
-                }
-                else
-                {
-                    listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(string.Format(post.UpdateTime + ": " + "[{0}]", post.Type))));
-                }
-            }
-
-            if (r_LoggedInUser.NewsFeed.Count == 0)
-            {
-                listBoxFeed.Invoke(new Action(() => listBoxFeed.BackColor = Color.Gray));
-                listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(k_NoPostsToRetrieve)));
-            }*/
         }
 
         /// <summary>
@@ -283,7 +259,7 @@ namespace AppUI
             Application.Exit();
         }
 
-        private readonly FeaturesFactory r_FeaturesFactory = new FeaturesFactory();
+        private readonly FeaturesBuilder r_FeaturesFactory = new FeaturesBuilder();
 
         /// <summary>
         /// Show 5 most likeable pictures 

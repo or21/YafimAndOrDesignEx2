@@ -13,7 +13,7 @@ namespace AppUI
     /// <summary>
     /// This is the Factory class
     /// </summary>
-    public class FeaturesFactory
+    public class FeaturesBuilder
     {
         /// <summary>
         /// The current project assembly
