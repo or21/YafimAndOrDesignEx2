@@ -3,6 +3,8 @@
 // Yafim Vodkov 308973882 Or Brand id 302521034
 // </copyright>
 //-----------------------------------------------------------------------
+
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -21,17 +23,17 @@ namespace Utils
         /// <summary>
         /// Label header
         /// </summary>
-        private readonly Label r_LabelHeader;
+        private readonly Label r_LabelHeader = new Label();
 
         /// <summary>
         /// Facebook icon
         /// </summary>
-        private readonly PictureBox r_PictureBoxFbIcon;
+        private readonly PictureBox r_PictureBoxFbIcon = new PictureBox();
 
         /// <summary>
         /// Facebook blue header
         /// </summary>
-        private readonly Label r_LabelFbTextHeader;
+        private readonly Label r_LabelFbTextHeader = new Label();
 
         /// <summary>
         /// Button margin 
@@ -60,10 +62,6 @@ namespace Utils
         /// </summary>
         public FbForm()
         {
-            r_LabelHeader = new Label();
-            r_PictureBoxFbIcon = new PictureBox();
-            r_LabelFbTextHeader = new Label();
-
             initializeForm();
         }
 
@@ -98,7 +96,6 @@ namespace Utils
 
             // FbForm
             BackColor = Color.White;
-            Load += FbForm_Load;
             Controls.Add(r_PictureBoxFbIcon);
             Controls.Add(r_LabelFbTextHeader);
             Controls.Add(r_LabelHeader);
@@ -109,9 +106,8 @@ namespace Utils
         /// <summary>
         /// resize the header on load
         /// </summary>
-        /// <param name="i_Sender">Object sender</param>
         /// <param name="i_Event">The event</param>
-        private void FbForm_Load(object i_Sender, System.EventArgs i_Event)
+        protected override void OnLoad(EventArgs i_Event)
         {
             r_LabelHeader.Size = new Size(Width, 29);
         }

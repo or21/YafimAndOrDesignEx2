@@ -92,7 +92,13 @@ namespace AppUI
             r_Util = Utils.Utils.Instance;
         }
 
-        protected override void OnLoad(EventArgs i_Event) {
+        /// <summary>
+        /// Loads the user info on different thread
+        /// </summary>
+        /// <param name="i_Event"></param>
+        protected override void OnLoad(EventArgs i_Event) 
+        {
+            base.OnLoad(i_Event);
             new Thread(fetchUserInfo).Start();
         }
 
