@@ -226,7 +226,11 @@ namespace AppUI
         private void fetchNewsFeed()
         {
             listBoxFeed.Invoke(new Action(() => listBoxFeed.HorizontalScrollbar = true));
-            foreach (Post post in r_LoggedInUser.NewsFeed)
+
+            listBoxFeed.Invoke(new Action(() => postsBindingSource.DataSource = r_LoggedInUser.Posts));
+
+            
+/*            foreach (Post post in r_LoggedInUser.NewsFeed)
             {
                 if (post.Message != null)
                 {
@@ -246,7 +250,7 @@ namespace AppUI
             {
                 listBoxFeed.Invoke(new Action(() => listBoxFeed.BackColor = Color.Gray));
                 listBoxFeed.Invoke(new Action(() => listBoxFeed.Items.Add(k_NoPostsToRetrieve)));
-            }
+            }*/
         }
 
         /// <summary>
