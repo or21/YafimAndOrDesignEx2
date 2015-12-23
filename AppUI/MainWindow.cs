@@ -16,7 +16,7 @@ using Utils;
 namespace AppUI
 {
     /// <summary>
-    /// UI of the application.
+    /// UI of the application
     /// </summary>
     public partial class MainWindow : FbForm
     {
@@ -51,24 +51,24 @@ namespace AppUI
         private const string k_WaitMessage = "This may take few seconds... Please click OK and Go get yourself a cup of coffee";
 
         /// <summary>
-        /// LoggedIn user
-        /// </summary>
-        private readonly User r_LoggedInUser;
-
-        /// <summary>
         /// List of facebook photos
         /// </summary>
         private static List<Photo> s_ListOfPhotos;
 
         /// <summary>
-        /// List of threads
-        /// </summary>
-        private readonly List<Thread> r_Threads = new List<Thread>();
-
-        /// <summary>
         /// User birthday
         /// </summary>
         private static string s_Bdate;
+
+        /// <summary>
+        /// LoggedIn user
+        /// </summary>
+        private readonly User r_LoggedInUser;
+
+        /// <summary>
+        /// List of threads
+        /// </summary>
+        private readonly List<Thread> r_Threads = new List<Thread>();
 
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
