@@ -231,7 +231,7 @@ namespace AppUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 490);
+            this.ClientSize = new System.Drawing.Size(782, 490);
             this.Controls.Add(this.labelFeed);
             this.Controls.Add(this.labelData);
             this.Controls.Add(this.labelPages);

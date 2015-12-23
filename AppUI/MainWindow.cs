@@ -16,12 +16,12 @@ using Utils;
 namespace AppUI
 {
     /// <summary>
-    /// UI of the application
+    /// UI of the application.
     /// </summary>
     public partial class MainWindow : FbForm
     {
         /// <summary>
-        /// Post message
+        /// Post message.
         /// </summary>
         private const string k_StartPost = "What's on your mind...";
 

@@ -11,7 +11,7 @@ using Utils;
 namespace AppUI
 {
     /// <summary>
-    /// Login form class
+    /// Login form class.
     /// </summary>
     public partial class LoginForm : FbForm
     {
