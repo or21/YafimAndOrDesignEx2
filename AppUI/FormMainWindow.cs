@@ -41,11 +41,6 @@ namespace AppUI
         private const string k_NoCheckIns = "You didn't do any check in";
 
         /// <summary>
-        /// No post to retrieve message
-        /// </summary>
-        private const string k_NoPostsToRetrieve = "No Posts to retrieve :(";
-
-        /// <summary>
         /// Wait message
         /// </summary>
         private const string k_WaitMessage = "This may take few seconds... Please click OK and Go get yourself a cup of coffee";
@@ -64,6 +59,11 @@ namespace AppUI
         /// LoggedIn user
         /// </summary>
         private readonly User r_LoggedInUser;
+
+        /// <summary>
+        /// Feature builder
+        /// </summary>
+        private readonly FeaturesBuilder r_FeaturesFactory = new FeaturesBuilder();
 
         /// <summary>
         /// List of threads
@@ -259,7 +259,6 @@ namespace AppUI
             Application.Exit();
         }
 
-        private readonly FeaturesBuilder r_FeaturesFactory = new FeaturesBuilder();
 
         /// <summary>
         /// Show 5 most likeable pictures 

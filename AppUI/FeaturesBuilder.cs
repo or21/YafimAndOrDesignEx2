@@ -27,6 +27,7 @@ namespace AppUI
         public void LoadFeature(Type i_FeatureToLoad)
         {
             m_Assembly = Assembly.GetExecutingAssembly();
+
             foreach (Type type in m_Assembly.GetTypes())
             {
                 if (type.IsSubclassOf(typeof(FormFb)) && type.IsPublic && type == i_FeatureToLoad)
