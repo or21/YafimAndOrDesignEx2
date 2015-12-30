@@ -258,8 +258,7 @@ namespace AppUI
         {
             Application.Exit();
         }
-
-
+        
         /// <summary>
         /// Show 5 most likeable pictures 
         /// </summary>
