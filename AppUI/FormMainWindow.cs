@@ -70,6 +70,8 @@ namespace AppUI
         /// </summary>
         private readonly List<Thread> r_Threads = new List<Thread>();
 
+        private List<MyPost> m_MyPosts; 
+
         /// <summary>
         /// Initializes a new instance of the MainWindow class.
         /// </summary>
@@ -78,8 +80,18 @@ namespace AppUI
         {
             InitializeComponent();
             r_LoggedInUser = i_UserData.LoggedInUser;
+            m_MyPosts = new List<MyPost>();
+            loadPosts();
             FacebookService.s_CollectionLimit = 1000;
             s_Bdate = r_LoggedInUser.Birthday;
+        }
+
+        private void loadPosts()
+        {
+            foreach (Post post in r_LoggedInUser.Posts)
+            {
+                m_MyPosts.Add(new MyPost(post));
+            }
         }
 
         /// <summary>
@@ -97,10 +109,10 @@ namespace AppUI
         /// </summary>
         /// <param name="i_Sender">Object sender</param>
         /// <param name="i_Event">The event</param>
-        private void textBoxPost_Click(object i_Sender, EventArgs i_Event)
+        private void displayMessageTextBox_Click(object i_Sender, EventArgs i_Event)
         {
-            textBoxPost.Clear();
-            textBoxPost.ForeColor = Color.Black;
+            displayPostTextBox.Clear();
+            displayPostTextBox.ForeColor = Color.Black;
         }
 
         /// <summary>
@@ -131,7 +143,8 @@ namespace AppUI
             r_Threads.Add(threadPhotos);
             threadPhotos.Start();
 
-            textBoxPost.Invoke(new Action(() => textBoxPost.Text = k_StartPost));
+            listBoxFeed.ClearSelected();
+            displayPostTextBox.Invoke(new Action(() => displayPostTextBox.Text = k_StartPost));
             new Thread(fetchEvents).Start();
             new Thread(fetchUserData).Start();
             new Thread(fetchNewsFeed).Start();
@@ -207,7 +220,7 @@ namespace AppUI
         private void fetchNewsFeed()
         {
             listBoxFeed.Invoke(new Action(() => listBoxFeed.HorizontalScrollbar = true));
-            listBoxFeed.Invoke(new Action(() => postsBindingSource.DataSource = r_LoggedInUser.Posts));
+            listBoxFeed.Invoke(new Action(() => postsBindingSource.DataSource = m_MyPosts));
         }
 
         /// <summary>
@@ -245,8 +258,13 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonPost_Click(object i_Sender, EventArgs i_Event)
         {
-            Status postedStatus = r_LoggedInUser.PostStatus(textBoxPost.Text);
-            MessageBox.Show(string.Format(@"Status: {0} Posted", postedStatus.Message));
+            //Status postedStatus = r_LoggedInUser.PostStatus(displayMessageTextBox.Text);
+            MyPost newPost = new MyPost(displayPostTextBox.Text);
+            m_MyPosts.Add(newPost);
+            listBoxFeed.Invoke(new Action(() => listBoxFeed.Refresh()));
+            MessageBox.Show(string.Format(@"Status: {0} Posted", displayPostTextBox.Text));
+            displayPostTextBox.Text = "";
+            listBoxFeed.ClearSelected();
         }
 
         /// <summary>

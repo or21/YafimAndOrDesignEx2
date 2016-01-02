@@ -39,7 +39,6 @@ namespace AppUI
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.textBoxPost = new System.Windows.Forms.TextBox();
             this.listBoxEvents = new System.Windows.Forms.ListBox();
             this.listBoxCheckIn = new System.Windows.Forms.ListBox();
             this.listBoxProfie = new System.Windows.Forms.ListBox();
@@ -55,6 +54,7 @@ namespace AppUI
             this.labelPages = new System.Windows.Forms.Label();
             this.labelData = new System.Windows.Forms.Label();
             this.labelFeed = new System.Windows.Forms.Label();
+            this.displayPostTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -66,15 +66,6 @@ namespace AppUI
             this.pictureBoxProfile.Size = new System.Drawing.Size(120, 83);
             this.pictureBoxProfile.TabIndex = 0;
             this.pictureBoxProfile.TabStop = false;
-            // 
-            // textBoxPost
-            // 
-            this.textBoxPost.HideSelection = false;
-            this.textBoxPost.Location = new System.Drawing.Point(225, 86);
-            this.textBoxPost.Name = "textBoxPost";
-            this.textBoxPost.Size = new System.Drawing.Size(304, 20);
-            this.textBoxPost.TabIndex = 1;
-            this.textBoxPost.Click += new System.EventHandler(this.textBoxPost_Click);
             // 
             // listBoxEvents
             // 
@@ -167,7 +158,7 @@ namespace AppUI
             // listBoxFeed
             // 
             this.listBoxFeed.DataSource = this.postsBindingSource;
-            this.listBoxFeed.DisplayMember = "Message";
+            this.listBoxFeed.DisplayMember = "DisplayMessage";
             this.listBoxFeed.FormattingEnabled = true;
             this.listBoxFeed.Location = new System.Drawing.Point(209, 147);
             this.listBoxFeed.Name = "listBoxFeed";
@@ -177,7 +168,7 @@ namespace AppUI
             // 
             // postsBindingSource
             // 
-            this.postsBindingSource.DataSource = typeof(FacebookWrapper.ObjectModel.Post);
+            this.postsBindingSource.DataSource = typeof(Utils.MyPost);
             // 
             // labelCheckIn
             // 
@@ -227,11 +218,20 @@ namespace AppUI
             this.labelFeed.TabIndex = 18;
             this.labelFeed.Text = "News feed";
             // 
-            // MainWindow
+            // displayPostTextBox
+            // 
+            this.displayPostTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postsBindingSource, "DisplayMessage", true));
+            this.displayPostTextBox.Location = new System.Drawing.Point(241, 84);
+            this.displayPostTextBox.Name = "displayPostTextBox";
+            this.displayPostTextBox.Size = new System.Drawing.Size(282, 20);
+            this.displayPostTextBox.TabIndex = 20;
+            // 
+            // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 490);
+            this.Controls.Add(this.displayPostTextBox);
             this.Controls.Add(this.labelFeed);
             this.Controls.Add(this.labelData);
             this.Controls.Add(this.labelPages);
@@ -246,15 +246,13 @@ namespace AppUI
             this.Controls.Add(this.listBoxCheckIn);
             this.Controls.Add(this.listBoxEvents);
             this.Controls.Add(this.listBoxFeed);
-            this.Controls.Add(this.textBoxPost);
             this.Controls.Add(this.pictureBoxProfile);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "MainWindow";
+            this.Name = "FormMainWindow";
             this.Text = "FaceBoo";
             this.Controls.SetChildIndex(this.pictureBoxProfile, 0);
-            this.Controls.SetChildIndex(this.textBoxPost, 0);
             this.Controls.SetChildIndex(this.listBoxFeed, 0);
             this.Controls.SetChildIndex(this.listBoxEvents, 0);
             this.Controls.SetChildIndex(this.listBoxCheckIn, 0);
@@ -269,6 +267,7 @@ namespace AppUI
             this.Controls.SetChildIndex(this.labelPages, 0);
             this.Controls.SetChildIndex(this.labelData, 0);
             this.Controls.SetChildIndex(this.labelFeed, 0);
+            this.Controls.SetChildIndex(this.displayPostTextBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -279,7 +278,6 @@ namespace AppUI
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBoxProfile;
-        private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.ListBox listBoxEvents;
         private System.Windows.Forms.ListBox listBoxCheckIn;
         private System.Windows.Forms.ListBox listBoxProfie;
@@ -295,5 +293,6 @@ namespace AppUI
         private System.Windows.Forms.Label labelData;
         private System.Windows.Forms.Label labelFeed;
         private System.Windows.Forms.BindingSource postsBindingSource;
+        private System.Windows.Forms.TextBox displayPostTextBox;
     }
 }
