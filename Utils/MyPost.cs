@@ -6,6 +6,9 @@ using FacebookWrapper.ObjectModel;
 
 namespace Utils
 {
+    /// <summary>
+    /// Wrapper for Post object
+    /// </summary>
     public class MyPost : Post
     {
         private Post m_OriginalPost ;
