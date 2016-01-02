@@ -109,10 +109,10 @@ namespace AppUI
         /// </summary>
         /// <param name="i_Sender">Object sender</param>
         /// <param name="i_Event">The event</param>
-        private void displayMessageTextBox_Click(object i_Sender, EventArgs i_Event)
+        private void postTextBox_Click(object i_Sender, EventArgs i_Event)
         {
-            displayPostTextBox.Clear();
-            displayPostTextBox.ForeColor = Color.Black;
+            postTextBox.Clear();
+            postTextBox.ForeColor = Color.Black;
         }
 
         /// <summary>
@@ -143,8 +143,7 @@ namespace AppUI
             r_Threads.Add(threadPhotos);
             threadPhotos.Start();
 
-            listBoxFeed.ClearSelected();
-            displayPostTextBox.Invoke(new Action(() => displayPostTextBox.Text = k_StartPost));
+            postTextBox.Invoke(new Action(() => postTextBox.Text = k_StartPost));
             new Thread(fetchEvents).Start();
             new Thread(fetchUserData).Start();
             new Thread(fetchNewsFeed).Start();
@@ -259,12 +258,10 @@ namespace AppUI
         private void buttonPost_Click(object i_Sender, EventArgs i_Event)
         {
             //Status postedStatus = r_LoggedInUser.PostStatus(displayMessageTextBox.Text);
-            MyPost newPost = new MyPost(displayPostTextBox.Text);
+            MyPost newPost = new MyPost(postTextBox.Text);
             m_MyPosts.Add(newPost);
             listBoxFeed.Invoke(new Action(() => listBoxFeed.Refresh()));
-            MessageBox.Show(string.Format(@"Status: {0} Posted", displayPostTextBox.Text));
-            displayPostTextBox.Text = "";
-            listBoxFeed.ClearSelected();
+            MessageBox.Show(string.Format(@"Status: {0} Posted", postTextBox.Text));
         }
 
         /// <summary>

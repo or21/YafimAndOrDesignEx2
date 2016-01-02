@@ -55,6 +55,7 @@ namespace AppUI
             this.labelData = new System.Windows.Forms.Label();
             this.labelFeed = new System.Windows.Forms.Label();
             this.displayPostTextBox = new System.Windows.Forms.TextBox();
+            this.postTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -133,7 +134,7 @@ namespace AppUI
             this.buttonPost.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPost.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.buttonPost.ForeColor = System.Drawing.Color.White;
-            this.buttonPost.Location = new System.Drawing.Point(546, 84);
+            this.buttonPost.Location = new System.Drawing.Point(544, 48);
             this.buttonPost.Name = "buttonPost";
             this.buttonPost.Size = new System.Drawing.Size(75, 23);
             this.buttonPost.TabIndex = 12;
@@ -226,11 +227,20 @@ namespace AppUI
             this.displayPostTextBox.Size = new System.Drawing.Size(282, 20);
             this.displayPostTextBox.TabIndex = 20;
             // 
+            // postTextBox
+            // 
+            this.postTextBox.Location = new System.Drawing.Point(241, 48);
+            this.postTextBox.Name = "postTextBox";
+            this.postTextBox.Size = new System.Drawing.Size(282, 20);
+            this.postTextBox.TabIndex = 21;
+            this.postTextBox.Click += new System.EventHandler(postTextBox_Click);
+            // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 490);
+            this.Controls.Add(this.postTextBox);
             this.Controls.Add(this.displayPostTextBox);
             this.Controls.Add(this.labelFeed);
             this.Controls.Add(this.labelData);
@@ -268,6 +278,7 @@ namespace AppUI
             this.Controls.SetChildIndex(this.labelData, 0);
             this.Controls.SetChildIndex(this.labelFeed, 0);
             this.Controls.SetChildIndex(this.displayPostTextBox, 0);
+            this.Controls.SetChildIndex(this.postTextBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -294,5 +305,6 @@ namespace AppUI
         private System.Windows.Forms.Label labelFeed;
         private System.Windows.Forms.BindingSource postsBindingSource;
         private System.Windows.Forms.TextBox displayPostTextBox;
+        private System.Windows.Forms.TextBox postTextBox;
     }
 }
