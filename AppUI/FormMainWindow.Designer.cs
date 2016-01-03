@@ -56,6 +56,8 @@ namespace AppUI
             this.labelFeed = new System.Windows.Forms.Label();
             this.displayPostTextBox = new System.Windows.Forms.TextBox();
             this.postTextBox = new System.Windows.Forms.TextBox();
+            this.labePostToFB = new System.Windows.Forms.Label();
+            this.labelUpdateLocalFeed = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -222,24 +224,44 @@ namespace AppUI
             // displayPostTextBox
             // 
             this.displayPostTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.postsBindingSource, "DisplayMessage", true));
-            this.displayPostTextBox.Location = new System.Drawing.Point(241, 84);
+            this.displayPostTextBox.Location = new System.Drawing.Point(283, 84);
             this.displayPostTextBox.Name = "displayPostTextBox";
-            this.displayPostTextBox.Size = new System.Drawing.Size(282, 20);
+            this.displayPostTextBox.Size = new System.Drawing.Size(240, 20);
             this.displayPostTextBox.TabIndex = 20;
             // 
             // postTextBox
             // 
-            this.postTextBox.Location = new System.Drawing.Point(241, 48);
+            this.postTextBox.Location = new System.Drawing.Point(283, 48);
             this.postTextBox.Name = "postTextBox";
-            this.postTextBox.Size = new System.Drawing.Size(282, 20);
+            this.postTextBox.Size = new System.Drawing.Size(240, 20);
             this.postTextBox.TabIndex = 21;
-            this.postTextBox.Click += new System.EventHandler(postTextBox_Click);
+            this.postTextBox.Click += new System.EventHandler(this.postTextBox_Click);
+            // 
+            // labePostToFB
+            // 
+            this.labePostToFB.AutoSize = true;
+            this.labePostToFB.Location = new System.Drawing.Point(179, 51);
+            this.labePostToFB.Name = "labePostToFB";
+            this.labePostToFB.Size = new System.Drawing.Size(56, 13);
+            this.labePostToFB.TabIndex = 22;
+            this.labePostToFB.Text = "Post to FB";
+            // 
+            // labelUpdateLocalFeed
+            // 
+            this.labelUpdateLocalFeed.AutoSize = true;
+            this.labelUpdateLocalFeed.Location = new System.Drawing.Point(179, 87);
+            this.labelUpdateLocalFeed.Name = "labelUpdateLocalFeed";
+            this.labelUpdateLocalFeed.Size = new System.Drawing.Size(98, 13);
+            this.labelUpdateLocalFeed.TabIndex = 23;
+            this.labelUpdateLocalFeed.Text = "Update Local Feed";
             // 
             // FormMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 490);
+            this.Controls.Add(this.labelUpdateLocalFeed);
+            this.Controls.Add(this.labePostToFB);
             this.Controls.Add(this.postTextBox);
             this.Controls.Add(this.displayPostTextBox);
             this.Controls.Add(this.labelFeed);
@@ -279,6 +301,8 @@ namespace AppUI
             this.Controls.SetChildIndex(this.labelFeed, 0);
             this.Controls.SetChildIndex(this.displayPostTextBox, 0);
             this.Controls.SetChildIndex(this.postTextBox, 0);
+            this.Controls.SetChildIndex(this.labePostToFB, 0);
+            this.Controls.SetChildIndex(this.labelUpdateLocalFeed, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.postsBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -306,5 +330,7 @@ namespace AppUI
         private System.Windows.Forms.BindingSource postsBindingSource;
         private System.Windows.Forms.TextBox displayPostTextBox;
         private System.Windows.Forms.TextBox postTextBox;
+        private System.Windows.Forms.Label labePostToFB;
+        private System.Windows.Forms.Label labelUpdateLocalFeed;
     }
 }
