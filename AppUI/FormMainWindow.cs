@@ -70,10 +70,13 @@ namespace AppUI
         /// </summary>
         private readonly List<Thread> r_Threads = new List<Thread>();
 
+        /// <summary>
+        /// My facebook posts
+        /// </summary>
         private List<MyPost> m_MyPosts; 
 
         /// <summary>
-        /// Initializes a new instance of the MainWindow class.
+        /// Initializes a new instance of the FormMainWindow class.
         /// </summary>
         /// <param name="i_UserData">The user facebook data</param>
         public FormMainWindow(LoginResult i_UserData)
@@ -86,6 +89,9 @@ namespace AppUI
             s_Bdate = r_LoggedInUser.Birthday;
         }
 
+        /// <summary>
+        /// Load facebook posts
+        /// </summary>
         private void loadPosts()
         {
             foreach (Post post in r_LoggedInUser.Posts)
@@ -97,7 +103,7 @@ namespace AppUI
         /// <summary>
         /// Loads the user info on different thread
         /// </summary>
-        /// <param name="i_Event"></param>
+        /// <param name="i_Event">Event args</param>
         protected override void OnLoad(EventArgs i_Event) 
         {
             base.OnLoad(i_Event);
@@ -257,11 +263,9 @@ namespace AppUI
         /// <param name="i_Event">The event</param>
         private void buttonPost_Click(object i_Sender, EventArgs i_Event)
         {
-            //Status postedStatus = r_LoggedInUser.PostStatus(displayMessageTextBox.Text);
-            MyPost newPost = new MyPost(postTextBox.Text);
-            m_MyPosts.Add(newPost);
+            Status postedStatus = r_LoggedInUser.PostStatus(postTextBox.Text);
             listBoxFeed.Invoke(new Action(() => listBoxFeed.Refresh()));
-            MessageBox.Show(string.Format(@"Status: {0} Posted", postTextBox.Text));
+            MessageBox.Show(string.Format(@"Status: {0} Posted", postedStatus));
         }
 
         /// <summary>

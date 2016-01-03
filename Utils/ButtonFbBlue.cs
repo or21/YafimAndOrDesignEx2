@@ -14,7 +14,7 @@ namespace Utils
     public sealed class ButtonFbBlue : Button
     {
         /// <summary>
-        /// Initializes a new instance of the FbBlueButton class.
+        /// Initializes a new instance of the ButtonFbBlue class.
         /// </summary>
         public ButtonFbBlue()
         {

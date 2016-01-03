@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="MyPost.cs" company="A16_Ex02">
+// Yafim Vodkov 308973882 Or Brand id 302521034
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 using FacebookWrapper.ObjectModel;
 
 namespace Utils
@@ -11,28 +14,53 @@ namespace Utils
     /// </summary>
     public class MyPost : Post
     {
-        private Post m_OriginalPost ;
+        /// <summary>
+        /// Original facebook post
+        /// </summary>
+        private readonly Post m_OriginalPost;
+
+        /// <summary>
+        /// Display message
+        /// </summary>
         private string m_DisplayMessage;
 
+        /// <summary>
+        /// Initializes a new instance of the MyPost class.
+        /// </summary>
+        /// <param name="i_StatusWithoutPostObj">Status without post</param>
         public MyPost(string i_StatusWithoutPostObj)
         {
             DisplayMessage = i_StatusWithoutPostObj;
         }
 
+        /// <summary>
+        /// Initializes a new instance of the MyPost class.
+        /// </summary>
+        /// <param name="i_Post">Post object</param>
         public MyPost(Post i_Post)
         {
             m_OriginalPost = i_Post;
             DisplayMessage = i_Post.Message;
         }
 
+        /// <summary>
+        /// Gets Original facebook post
+        /// </summary>
         public Post OriginalPost
         {
             get { return m_OriginalPost; } 
         }
 
+        /// <summary>
+        /// Gets or sets the message
+        /// </summary>
         public string DisplayMessage
         {
-            get { return m_DisplayMessage; }
+            get
+            {
+                return m_DisplayMessage;
+            }
+
             set
             {
                 if (m_OriginalPost == null)

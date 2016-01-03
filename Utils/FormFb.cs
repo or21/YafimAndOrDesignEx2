@@ -58,7 +58,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Initializes a new instance of the FbForm class.
+        /// Initializes a new instance of the FormFb class.
         /// </summary>
         public FormFb()
         {

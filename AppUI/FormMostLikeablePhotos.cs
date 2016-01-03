@@ -49,7 +49,7 @@ namespace AppUI
         private List<Photo> m_TopLikeablePhotos;
 
         /// <summary>
-        /// Initializes a new instance of the MostLikeablePhotosForm class.
+        /// Initializes a new instance of the FormMostLikeablePhotos class.
         /// </summary>
         public FormMostLikeablePhotos()
         {

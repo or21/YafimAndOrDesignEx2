@@ -16,7 +16,7 @@ namespace AppUI
     public partial class FormLogin : FormFb
     {
         /// <summary>
-        /// Initializes a new instance of the LoginForm class.
+        /// Initializes a new instance of the FormLogin class.
         /// </summary>
         public FormLogin()
         {
